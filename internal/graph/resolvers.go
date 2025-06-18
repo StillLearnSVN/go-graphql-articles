@@ -78,7 +78,7 @@ func (r *Resolver) CreateArticle(p graphql.ResolveParams) (interface{}, error) {
 		return nil, fmt.Errorf("failed to commit transaction: %w", err)
 	}
 
-	article.Author = &author
+	// article.Author = &author
 
 	return map[string]interface{}{
 		"id":        strconv.Itoa(article.ID),

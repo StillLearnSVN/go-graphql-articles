@@ -93,7 +93,7 @@ go test ./tests/unit_test.go
 You can use [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Altair](https://altair.sirmuel.design/) to interact with the API at `http://localhost:8080/query`.
 
 ## Example GraphQL Query
-
+- Get 10 Articles
 ```
 query {
   articles(first: 10) {
@@ -116,6 +116,39 @@ query {
       endCursor
     }
     totalCount
+  }
+}
+```
+- Search Articles by Keyword
+```
+query SearchArticlesByKeyword {
+  articles(first: 10, query: "GraphQL") {
+    totalCount
+    edges {
+      node {
+        id
+        title
+        body
+      }
+    }
+  }
+}
+```
+
+- Filter ArticlesByAuthor
+```
+query FilterArticlesByAuthor {
+  articles(first: 5, author: "KumparanTECH") {
+    totalCount
+    edges {
+      node {
+        id
+        title
+        author {
+          name
+        }
+      }
+    }
   }
 }
 ```
